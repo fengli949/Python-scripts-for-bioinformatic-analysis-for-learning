@@ -1,0 +1,9 @@
+# File format conversion (fasta '\n' to '\t')
+from Bio import SeqIO
+fasta_records = SeqIO.parse("../files/seq.nt.fa", "fasta")  
+count = SeqIO.write(fasta_records , '../files/seqs.tab' , 'tab')
+
+# add dups number to the third column of ssp_sequence file
+
+awk '{print $4 }' integration_up_down.txt > dups.txt
+paste integration_up_down_sequence.txt dups.txt > integration_up_down_dupseq.txt
